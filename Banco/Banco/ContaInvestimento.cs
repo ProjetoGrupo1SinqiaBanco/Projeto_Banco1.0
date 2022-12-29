@@ -8,7 +8,7 @@ class ContaInvestimento : Conta
     public int perfilInvestidor;
 
     public ContaInvestimento(TipoConta tipoConta, double numeroConta, double saldo, string nome,
-                            int cpf, DateTime dataNascimento) : base(tipoConta, numeroConta, saldo, nome, cpf, dataNascimento)
+                            long cpf, DateTime dataNascimento) : base(tipoConta, numeroConta, saldo, nome, cpf, dataNascimento)
     {
     }
 

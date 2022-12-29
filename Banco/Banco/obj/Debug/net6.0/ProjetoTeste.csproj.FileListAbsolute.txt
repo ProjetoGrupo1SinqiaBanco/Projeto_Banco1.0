@@ -28,3 +28,6 @@ C:\Users\jusea\OneDrive\Documentos\Sinqia\BeTheNext\Modulo 2 - POO\Projetos\Banc
 C:\Users\jusea\OneDrive\Documentos\Sinqia\BeTheNext\Modulo 2 - POO\Projetos\Banco_Rep_3\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.pdb
 C:\Users\jusea\OneDrive\Documentos\Sinqia\BeTheNext\Modulo 2 - POO\Projetos\Banco_Rep_3\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.genruntimeconfig.cache
 C:\Users\jusea\OneDrive\Documentos\Sinqia\BeTheNext\Modulo 2 - POO\Projetos\Banco_Rep_3\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ref\ProjetoTeste.dll
+C:\Users\Pichau\source\repos\Projeto1.0\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.dll
+C:\Users\Pichau\source\repos\Projeto1.0\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\refint\ProjetoTeste.dll
+C:\Users\Pichau\source\repos\Projeto1.0\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.pdb

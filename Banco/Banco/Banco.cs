@@ -49,7 +49,8 @@ class Banco
 
     public static void CadastrarConta()
     {
-        int entradaTipoConta, entradaCpf;
+        int entradaTipoConta;
+        long entradaCpf;
         double entradaNumeroConta, entradaSaldo = 0, entradaSaldoMinimo = 50;
         string entradaNome;
         DateTime entradaDataNascimento;
@@ -101,11 +102,11 @@ class Banco
             do
             {
                 Console.Write("Digite o CPF do titular da conta: ");
-                sucesso = int.TryParse(Console.ReadLine(), out entradaCpf);
+                sucesso = long.TryParse(Console.ReadLine(), out entradaCpf);
 
                 if (!sucesso)
                 {
-                    Console.WriteLine("Por Favor, utilize apenas numeros");
+                    Console.WriteLine("Por Favor, utilize apenas numeros\n");
                     continue;
                 }
 
@@ -124,7 +125,7 @@ class Banco
 
                 if (!sucesso)
                 {
-                    Console.WriteLine("Por Favor, digite seguindo o seguinte modelo (colocando as barras tambem): Dia/Mês/Ano");
+                    Console.WriteLine("Por Favor, digite seguindo o seguinte modelo (colocando as barras tambem): Dia/Mês/Ano\n");
                 }
 
             } while (!sucesso);

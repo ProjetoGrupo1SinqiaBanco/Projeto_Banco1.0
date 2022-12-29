@@ -9,14 +9,14 @@ abstract class Conta
     public TipoConta TipoConta { get; private set; }
     private double Saldo { get; set; }
     public string Nome { get; private set; }
-    private int CPF { get; set; }
+    private long CPF { get; set; }
     private DateTime DataNascimento { get; set; }
 
     //As mensagens de transferencia, saque e depósito serão armazenadas aqui independente da conta
     List<string> extratoBancario = new List<string>();
 
     //Construtor da classe Conta
-    public Conta(TipoConta tipoConta, double numeroConta, double saldo, string nome, int cpf, DateTime dataNascimento)
+    public Conta(TipoConta tipoConta, double numeroConta, double saldo, string nome, long cpf, DateTime dataNascimento)
     {
         this.NumeroConta = numeroConta;
         this.TipoConta = tipoConta;

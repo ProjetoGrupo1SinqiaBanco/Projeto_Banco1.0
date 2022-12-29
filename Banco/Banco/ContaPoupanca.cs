@@ -6,7 +6,7 @@ class ContaPoupanca : Conta
 
     //Construtor da classe
     public ContaPoupanca(TipoConta tipoConta, double numeroConta, double saldo,
-                        string nome, int cpf, DateTime dataNascimento, double saldoMinimo) : base(tipoConta, numeroConta, saldo, nome, cpf, dataNascimento)
+                        string nome, long cpf, DateTime dataNascimento, double saldoMinimo) : base(tipoConta, numeroConta, saldo, nome, cpf, dataNascimento)
     {
         this.SaldoMinimo = saldoMinimo;
     }

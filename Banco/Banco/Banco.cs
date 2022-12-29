@@ -93,21 +93,9 @@ class Banco
 
             } while (!sucesso);
 
-            
-
-            string naoPodeNoNome = "1234567890'!@#$%¨&*()¹²³£¢¬[]{}ºª/|?°,.<>:-*+§";
-            //Nome do Titular e Validação da entrada de dados 
-            do
-            {
-                Console.Write("Digite o nome do titular da conta: ");
-                entradaNome = Console.ReadLine();
-
-                if (entradaNome.Contains(naoPodeNoNome))
-                {
-                    Console.WriteLine("Por Favor, utilize apenas letras\n");
-                }
-
-            } while (entradaNome.Contains(naoPodeNoNome));
+            //Nome do Titular
+            Console.Write("Digite o nome do titular da conta: ");
+            entradaNome = Console.ReadLine();
 
             //CPF do titular e Validação da entrada de dados
             do

@@ -2,7 +2,7 @@
 
 class ContaInvestimento : Conta
 {
-    public string PerfilInvestidor { get; set; }
+    public string PerfilInvestidor { get; private set; }
     public double Ação { get; set; }
 
     //retirar propriedade e adicionar no construtor
@@ -13,7 +13,7 @@ class ContaInvestimento : Conta
     {
     }
 
-    //Método de investir em ações
+    //Método de investir em ações, aplicar o metodo para chamada no main, metodo está solto sem uso.
     public void InvestirEmAcoes(double valor, Mercado_de_Acoes empresa)
     {
         //TODO

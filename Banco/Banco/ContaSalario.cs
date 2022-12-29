@@ -11,7 +11,7 @@ class ContaSalario : Conta
 
     //construtor
     public ContaSalario(TipoConta tipoConta, double numeroConta, double saldo, string nome,
-                        int cpf, DateTime dataNascimento, string nomeEmpresa, int cnpj, double salario) : base(tipoConta, numeroConta, saldo, nome, cpf, dataNascimento)
+                        long cpf, DateTime dataNascimento, string nomeEmpresa, int cnpj, double salario) : base(tipoConta, numeroConta, saldo, nome, cpf, dataNascimento)
     {
         //validação do holerite
         Console.Clear();

@@ -49,7 +49,8 @@ class Banco
 
     public static void CadastrarConta()
     {
-        int entradaTipoConta, entradaCpf;
+        int entradaTipoConta;
+        long entradaCpf;
         double entradaNumeroConta, entradaSaldo = 0, entradaSaldoMinimo = 50;
         string entradaNome;
         DateTime entradaDataNascimento;
@@ -93,31 +94,19 @@ class Banco
 
             } while (!sucesso);
 
-            
-
-            string naoPodeNoNome = "1234567890'!@#$%¨&*()¹²³£¢¬[]{}ºª/|?°,.<>:-*+§";
-            //Nome do Titular e Validação da entrada de dados 
-            do
-            {
-                Console.Write("Digite o nome do titular da conta: ");
-                entradaNome = Console.ReadLine();
-
-                if (entradaNome.Contains(naoPodeNoNome))
-                {
-                    Console.WriteLine("Por Favor, utilize apenas letras\n");
-                }
-
-            } while (entradaNome.Contains(naoPodeNoNome));
+            //Nome do Titular
+            Console.Write("Digite o nome do titular da conta: ");
+            entradaNome = Console.ReadLine();
 
             //CPF do titular e Validação da entrada de dados
             do
             {
                 Console.Write("Digite o CPF do titular da conta: ");
-                sucesso = int.TryParse(Console.ReadLine(), out entradaCpf);
+                sucesso = long.TryParse(Console.ReadLine(), out entradaCpf);
 
                 if (!sucesso)
                 {
-                    Console.WriteLine("Por Favor, utilize apenas numeros");
+                    Console.WriteLine("Por Favor, utilize apenas numeros\n");
                     continue;
                 }
 
@@ -136,7 +125,7 @@ class Banco
 
                 if (!sucesso)
                 {
-                    Console.WriteLine("Por Favor, digite seguindo o seguinte modelo (colocando as barras tambem): Dia/Mês/Ano");
+                    Console.WriteLine("Por Favor, digite seguindo o seguinte modelo (colocando as barras tambem): Dia/Mês/Ano\n");
                 }
 
             } while (!sucesso);

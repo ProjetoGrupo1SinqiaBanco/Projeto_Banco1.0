@@ -73,12 +73,12 @@ class Banco
                 Console.Write("Digite 1 para Conta Poupança | 2 para Conta Salário | 3 para Conta Investimento : ");
                 sucesso = int.TryParse(Console.ReadLine(), out entradaTipoConta);
 
-                if (!sucesso || entradaTipoConta != 1 || entradaTipoConta != 2 || entradaTipoConta != 3)
+                if (!sucesso || entradaTipoConta > 3 || entradaTipoConta < 1)
                 {
                     Console.WriteLine("Opção digitada não existe, Tente Novamente\n");
                 }
 
-            } while (!sucesso || entradaTipoConta != 1 || entradaTipoConta != 2 || entradaTipoConta != 3);
+            } while (!sucesso || entradaTipoConta > 3 || entradaTipoConta < 1);
 
             //Numero da Conta do usuario e a Validação da entrada de dados
             do

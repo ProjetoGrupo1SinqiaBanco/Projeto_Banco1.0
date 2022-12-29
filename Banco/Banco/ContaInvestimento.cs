@@ -32,6 +32,7 @@ class ContaInvestimento : Conta
     //Método inicial de Simular um perfil de investidor
     public string SimulaPerfilInvestidor()
     {
+        Console.Clear();
         Console.WriteLine("Simule seu perfil de investidor: ");
 
         char resposta1;
@@ -39,23 +40,23 @@ class ContaInvestimento : Conta
         {
             Console.WriteLine("Toma maiores riscos ao investir seu dinheiro? (s/n)");
             resposta1 = char.Parse(Console.ReadLine());
-        } while (resposta1 != 'n' || resposta1 != 's');
+        } while (resposta1 != 'n' && resposta1 != 's');
 
         char resposta2;
         do
         {
             Console.WriteLine("Busca ganhos a longo prazo? (s/n)");
             resposta2 = char.Parse(Console.ReadLine());
-        } while (resposta2 != 'n' || resposta2 != 's');
+        } while (resposta2 != 'n' && resposta2 != 's');
         
         char resposta3;
         do
         {
             Console.WriteLine("Tem maiores conhecimentos do mercado financeiro e abre mão de maiores seguranças? (s/n)");
             resposta3 = char.Parse(Console.ReadLine());
-        } while (resposta2 != 'n' || resposta2 != 's');
+        } while (resposta3 != 'n' && resposta3 != 's');
 
-
+        Console.Clear();
         if(resposta1 == 'n' && resposta2 == 's' && resposta3 == 'n')
         {
             Console.WriteLine("Seu perfil é Conservador.");
@@ -81,7 +82,7 @@ class ContaInvestimento : Conta
             Console.WriteLine("Seu perfil é Conservador.");
         }
 
-        Console.WriteLine("Baseado em sua simulação de perfil, selecione seu perfil de investimento:\n");
+        Console.WriteLine("\nBaseado em sua simulação de perfil, selecione o perfil de investimento desejado:\n");
         Console.WriteLine("1 - Conservador: Segurança é seu bem mais precioso.");
         Console.WriteLine("2 - Moderado: Gosta de investir de forma segura, mas também está disposto a se aventurar um pouco.");
         Console.WriteLine("3 - Arrojado: O maior risco é não correr riscos.");

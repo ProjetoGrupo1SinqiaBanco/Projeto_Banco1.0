@@ -29,14 +29,13 @@ abstract class Conta
     //Métodos
 
     //Verifica o saldo atual da conta antes de realizar o saque
-    public bool SacarDinheiro(double valorSaque)
+    public virtual bool SacarDinheiro(double valorSaque)
     {
         if (this.Saldo - valorSaque <= 0)
         {
             Console.WriteLine("Saldo insuficiente!");
             return false;
         }
-
         this.Saldo -= valorSaque;
 
         Console.WriteLine($"Saque de R${valorSaque} reais realizado com sucesso");
@@ -77,9 +76,23 @@ abstract class Conta
         extratoBancario.Add(mensagemExtratoTransferencia);
     }
 
-    public virtual void CalcularValorTarifaManutencao(TipoConta tipoConta)
+    public virtual double CalcularValorTarifaManutencao()
     {
-        //TODO
+        double taxaSaque = 0;
+
+        if (TipoConta.ContaPoupanca.Equals(1))
+        {
+            taxaSaque = 0.35;       
+        }
+        else if (TipoConta.ContaSalario.Equals(2))
+        {
+             taxaSaque = 0.30;
+        }
+        else if (TipoConta.ContaInvestimento.Equals(3))
+        {
+             taxaSaque = 0.80;
+        }
+        return taxaSaque;
     }
 
     //Percorre a List e exibindo o número da conta, saldo atual e as mensagens de saque, depósito e transferência, independentemente da conta

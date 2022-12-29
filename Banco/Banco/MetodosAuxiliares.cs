@@ -16,8 +16,8 @@ namespace Banco
     {
         int entradaTipoConta;
         long entradaCpf;
-            double entradaNumeroConta = GerarNumeroConta();
-            double entradaSaldoMinimo = 50 , entradaSaldo = 0;
+        double entradaNumeroConta = GerarNumeroConta();
+        double entradaSaldoMinimo = 50 , entradaSaldo = 0;
         string entradaNome;
         DateTime entradaDataNascimento;
         bool sucesso, bug = false;
@@ -342,6 +342,7 @@ namespace Banco
     {
         int indiceConta;
         double valorSaque;
+        double taxaSaque;
         bool sucesso, bug = false;
 
         try
@@ -371,8 +372,12 @@ namespace Banco
             {
                 Console.Write("Digite a quantia a ser sacada: ");
                 sucesso = double.TryParse(Console.ReadLine(), out valorSaque);
+                taxaSaque = listaContas[indiceConta].CalcularValorTarifaManutencao(listaContas[indiceConta].TipoConta);
 
-                if (!sucesso)
+                    valorSaque -= taxaSaque;     
+                    
+
+                    if (!sucesso)
                 {
                     Console.WriteLine("Por Favor, digite apenas numeros\n");
                     continue;

@@ -2,11 +2,11 @@
 
 class ContaInvestimento : Conta
 {
-    public int PerfilInvestidor { get; set; }
+    public string PerfilInvestidor { get; set; }
     public double Ação { get; set; }
 
     //retirar propriedade e adicionar no construtor
-    public int perfilInvestidor;
+    //public string perfilInvestidor;
 
     public ContaInvestimento(TipoConta tipoConta, double numeroConta, double saldo, string nome,
                             long cpf, DateTime dataNascimento) : base(tipoConta, numeroConta, saldo, nome, cpf, dataNascimento)
@@ -92,12 +92,15 @@ class ContaInvestimento : Conta
         switch (perfilInvestidor)
         {
             case 1:
+                this.PerfilInvestidor = "Conservador";
                 return "Conservador";
 
             case 2:
+                this.PerfilInvestidor = "Moderado";
                 return "Moderado";
 
             case 3:
+                this.PerfilInvestidor = "Arrojado";
                 return "Arrojado";
 
         }

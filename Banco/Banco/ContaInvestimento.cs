@@ -49,6 +49,7 @@ class ContaInvestimento : Conta
     public override void ExtratoBancario()
     {
         Console.WriteLine("Extrato da conta investimento");
+        base.ExtratoBancario();
     }
 
 }

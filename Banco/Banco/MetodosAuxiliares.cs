@@ -16,7 +16,8 @@ namespace Banco
     {
         int entradaTipoConta;
         long entradaCpf;
-        double entradaNumeroConta, entradaSaldo = 0, entradaSaldoMinimo = 50;
+        double entradaNumeroConta = GerarNumeroConta();
+        double entradaSaldoMinimo = 50 , entradaSaldo = 0;
         string entradaNome;
         DateTime entradaDataNascimento;
         bool sucesso, bug = false;
@@ -47,17 +48,11 @@ namespace Banco
             } while (!sucesso || entradaTipoConta > 3 || entradaTipoConta < 1);
 
             //Numero da Conta do usuario e a Validação da entrada de dados
-            do
-            {
-                Console.Write("Digite o número da conta: ");
-                sucesso = double.TryParse(Console.ReadLine(), out entradaNumeroConta);
+           
+                Console.Write($"O número da nova conta é: {entradaNumeroConta}");
+                Console.WriteLine(string.Empty);
 
-                if (!sucesso)
-                {
-                    Console.WriteLine("Por Favor, Digite apenas numeros\n");
-                }
-
-            } while (!sucesso);
+            while (!sucesso);
 
             //Nome do Titular
             Console.Write("Digite o nome do titular da conta: ");
@@ -347,6 +342,7 @@ namespace Banco
     {
         int indiceConta;
         double valorSaque;
+        double taxaSaque;
         bool sucesso, bug = false;
 
         try
@@ -376,8 +372,12 @@ namespace Banco
             {
                 Console.Write("Digite a quantia a ser sacada: ");
                 sucesso = double.TryParse(Console.ReadLine(), out valorSaque);
+                taxaSaque = listaContas[indiceConta].CalcularValorTarifaManutencao(listaContas[indiceConta].TipoConta);
 
-                if (!sucesso)
+                    valorSaque -= taxaSaque;     
+                    
+
+                    if (!sucesso)
                 {
                     Console.WriteLine("Por Favor, digite apenas numeros\n");
                     continue;
@@ -534,8 +534,17 @@ namespace Banco
         }
     }
 
-    //Menu da aplicação
-    public static string ObterOpcaoDoUsuario()
+        //Gerador de número de conta automático
+        public static double GerarNumeroConta()
+        {
+            Random rnd = new Random();
+            double numeroContaRandom = rnd.Next(100000, 999999);
+
+            return numeroContaRandom;
+        }
+
+            //Menu da aplicação
+            public static string ObterOpcaoDoUsuario()
     {
         Console.WriteLine();
         Console.WriteLine("Bem vindo(a) ao Banco!!!");

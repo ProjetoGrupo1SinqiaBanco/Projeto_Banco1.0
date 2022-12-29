@@ -7,7 +7,7 @@ abstract class Conta
     public double NumeroConta { get; private set; }
     //Enum de tipo Conta
     public TipoConta TipoConta { get; private set; }
-    private double Saldo { get; set; }
+    protected double Saldo { get; set; }
     public string Nome { get; private set; }
     private long CPF { get; set; }
     private DateTime DataNascimento { get; set; }

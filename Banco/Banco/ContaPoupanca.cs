@@ -15,4 +15,10 @@ class ContaPoupanca : Conta
     public void TransferirParaPoupança()
     {
     }
+
+    public override void ExtratoBancario()
+    {
+        Console.WriteLine("Extrato - conta poupança");
+        base.ExtratoBancario();
+    }
 }

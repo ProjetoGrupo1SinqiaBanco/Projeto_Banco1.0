@@ -76,4 +76,10 @@ class ContaSalario : Conta
         Console.WriteLine($"Salário: {this.Salario}");
     }
 
+    public override void ExtratoBancario()
+    {
+        Console.WriteLine("Extrato - conta salário");
+        base.ExtratoBancario();
+    }
+
 }

@@ -21,6 +21,8 @@ namespace Banco
         string entradaNome;
         DateTime entradaDataNascimento;
         bool sucesso, bug = false;
+        bool numero = true;
+        int eNumero;
 
         try
         {
@@ -54,9 +56,21 @@ namespace Banco
 
             while (!sucesso);
 
-            //Nome do Titular
-            Console.Write("Digite o nome do titular da conta: ");
-            entradaNome = Console.ReadLine();
+                //Nome do Titular
+                do
+                {
+                    Console.Write("Digite o nome do titular da conta: ");
+                    entradaNome = Console.ReadLine();
+
+                    numero = int.TryParse(entradaNome, out eNumero);
+
+                    if(numero == true)
+                    {
+                        Console.WriteLine("Por favor, digite um nome válido para a a criação da sua conta!\n");
+                    }
+
+
+                } while (numero == true);
 
             //CPF do titular e Validação da entrada de dados
             do
@@ -319,7 +333,7 @@ namespace Banco
 
                 if (valorTransferencia <= 0)
                 {
-                    Console.WriteLine("Por Favor, insira um valor valido para transferencia (minimo R$00,01)");
+                    Console.WriteLine("Por Favor, insira um valor válido para transferencia (minimo R$00,01)");
                 }
 
             } while (valorTransferencia <= 0);

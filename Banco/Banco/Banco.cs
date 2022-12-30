@@ -5,7 +5,7 @@ using Banco;
 
 class BancoMain
 {
-    
+
 
     public static void Main(string[] args)
     {

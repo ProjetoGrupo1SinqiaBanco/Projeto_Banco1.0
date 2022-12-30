@@ -48,7 +48,7 @@ class ContaInvestimento : Conta
             Console.WriteLine("Busca ganhos a longo prazo? (s/n)");
             resposta2 = char.Parse(Console.ReadLine());
         } while (resposta2 != 'n' && resposta2 != 's');
-        
+
         char resposta3;
         do
         {
@@ -57,27 +57,27 @@ class ContaInvestimento : Conta
         } while (resposta3 != 'n' && resposta3 != 's');
 
         Console.Clear();
-        if(resposta1 == 'n' && resposta2 == 's' && resposta3 == 'n')
+        if (resposta1 == 'n' && resposta2 == 's' && resposta3 == 'n')
         {
             Console.WriteLine("Seu perfil é Conservador.");
         }
-        else if(resposta1 == 'n' && resposta2 == 's' && resposta3 == 's')
+        else if (resposta1 == 'n' && resposta2 == 's' && resposta3 == 's')
         {
             Console.WriteLine("Seu perfil é Moderado.");
         }
-        else if(resposta1 == 's' && resposta2 == 'n' && resposta3 == 's')
+        else if (resposta1 == 's' && resposta2 == 'n' && resposta3 == 's')
         {
             Console.WriteLine("Seu perfil é Arrojado.");
         }
-        else if(resposta1 == 's' && resposta2 == 'n' && resposta3 == 'n')
+        else if (resposta1 == 's' && resposta2 == 'n' && resposta3 == 'n')
         {
             Console.WriteLine("Seu perfil é Moderado.");
         }
-        else if(resposta1 == 's' && resposta2 == 's' && resposta3 == 's')
+        else if (resposta1 == 's' && resposta2 == 's' && resposta3 == 's')
         {
             Console.WriteLine("Seu perfil é Arrojado.");
         }
-        else if(resposta1 == 'n' && resposta2 == 'n' && resposta3 == 'n')
+        else if (resposta1 == 'n' && resposta2 == 'n' && resposta3 == 'n')
         {
             Console.WriteLine("Seu perfil é Conservador.");
         }

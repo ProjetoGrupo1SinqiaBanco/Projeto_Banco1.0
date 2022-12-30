@@ -82,15 +82,15 @@ abstract class Conta
 
         if (tipoDaConta == TipoConta.ContaPoupanca)
         {
-            taxaSaque = 0.35;       
+            taxaSaque = 0.35;
         }
         else if (tipoDaConta == TipoConta.ContaSalario)
         {
-             taxaSaque = 0.30;
+            taxaSaque = 0.30;
         }
         else if (tipoDaConta == TipoConta.ContaInvestimento)
         {
-             taxaSaque = 0.80;
+            taxaSaque = 0.80;
         }
         return taxaSaque;
     }

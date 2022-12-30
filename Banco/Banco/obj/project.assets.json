@@ -8,19 +8,24 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\rhuan\\.nuget\\packages\\": {}
+    "C:\\Users\\lucas\\.nuget\\packages\\": {},
+    "D:\\VSComponentes\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rhuan\\OneDrive\\Área de Trabalho\\Projeto_Banco1.0\\Banco\\Banco\\ProjetoTeste.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\Source\\Repos\\Projeto_Banco1.0\\Banco\\Banco\\ProjetoTeste.csproj",
       "projectName": "ProjetoTeste",
-      "projectPath": "C:\\Users\\rhuan\\OneDrive\\Área de Trabalho\\Projeto_Banco1.0\\Banco\\Banco\\ProjetoTeste.csproj",
-      "packagesPath": "C:\\Users\\rhuan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rhuan\\OneDrive\\Área de Trabalho\\Projeto_Banco1.0\\Banco\\Banco\\obj\\",
+      "projectPath": "C:\\Users\\lucas\\Source\\Repos\\Projeto_Banco1.0\\Banco\\Banco\\ProjetoTeste.csproj",
+      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lucas\\Source\\Repos\\Projeto_Banco1.0\\Banco\\Banco\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\VSComponentes\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\rhuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

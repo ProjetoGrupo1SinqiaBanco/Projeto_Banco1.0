@@ -113,15 +113,24 @@ namespace Banco
                     //Saldo Minimo e Validação da entrada de dados
                     do
                     {
-                        Console.Write("Digite o saldo inicial da conta: ");
-                        sucesso = double.TryParse(Console.ReadLine(), out entradaSaldoMinimo);
+                        Console.Write($"O saldo mínimo para conta poupança é : R$ {entradaSaldoMinimo},00\n");
+                        Console.WriteLine("Escolha o valor do seu primeiro depósito: ");
+                        sucesso = double.TryParse(Console.ReadLine(), out entradaSaldo);
+                        double sucessoDeposito = entradaSaldo;
 
                         if (!sucesso)
                         {
                             Console.WriteLine("Por Favor, Digite apenas numeros\n");
                         }
 
-                    } while (!sucesso);
+
+                        if (entradaSaldo < 50)
+                        {
+                            Console.WriteLine($"O saldo deve ser maior que R$ {entradaSaldoMinimo},00.");
+                            sucesso = false;
+                        }
+
+                        } while (!sucesso);
 
                     ContaPoupanca novaContaPoupanca = new ContaPoupanca(tipoConta: (TipoConta)entradaTipoConta,
                                                                         numeroConta: entradaNumeroConta,

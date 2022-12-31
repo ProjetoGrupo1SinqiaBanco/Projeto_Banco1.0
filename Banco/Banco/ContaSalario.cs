@@ -5,29 +5,66 @@ using System.Threading;
 class ContaSalario : Conta
 {
     //Propriedades
-    public int CNPJPagador { get; set; }
+    public long CNPJPagador { get; set; }
     private string NomeEmpresa { get; set; }
     public double Salario { get; private set; }
 
     //construtor
     public ContaSalario(TipoConta tipoConta, double numeroConta, double saldo, string nome,
-                        long cpf, DateTime dataNascimento, string nomeEmpresa, int cnpj, double salario) : base(tipoConta, numeroConta, saldo, nome, cpf, dataNascimento)
+                        long cpf, DateTime dataNascimento, string nomeEmpresa, long cnpj, double salario) : base(tipoConta, numeroConta, saldo, nome, cpf, dataNascimento)
     {
-        //validação do holerite
+        string nomePessoalHolerite, nomeEmpresaHolerite;
+        long cnpjHolerite;
+        double salarioHolerite;
+        bool sucesso;
+
+        //VALIDAÇÃO DO HOLERITE
         Console.Clear();
+        Console.WriteLine("Entre com seu HOLERITE:");
 
-        Console.WriteLine("Entre com seu holerite:");
-        Console.Write("Nome funcionário:");
-        string nomePessoalHolerite = Console.ReadLine();
+        Console.Write("Nome funcionário: ");
+        nomePessoalHolerite = Console.ReadLine();
 
-        Console.Write("Nome da empresa:");
-        string nomeEmpresaHolerite = Console.ReadLine();
+        Console.Write("Nome da empresa: ");
+        nomeEmpresaHolerite = Console.ReadLine();
 
-        Console.WriteLine("CNPJ da empresa:");
-        int cnpjHolerite = int.Parse(Console.ReadLine());
+        //cnpj e validação da entrada de dados
+        do
+        {
+            Console.Write("CNPJ da empresa: ");
+            sucesso = long.TryParse(Console.ReadLine(), out cnpjHolerite);
 
-        Console.WriteLine("Salário:");
-        double salarioHolerite = int.Parse(Console.ReadLine());
+            if (!sucesso)
+            {
+                Console.WriteLine("Por Favor, Digite apenas numeros\n");
+                continue;
+            }
+
+            if (cnpjHolerite.ToString().Length != 14)
+            {
+                Console.WriteLine("Por Favor, digite um CNPJ valido (14 digitos)\n");
+            }
+
+        } while (cnpjHolerite.ToString().Length != 14);
+
+        //salario e validação da entrada de dados
+        do
+        {
+            Console.Write("Salário: ");
+            sucesso = double.TryParse(Console.ReadLine(), out salarioHolerite);
+
+            if (!sucesso)
+            {
+                Console.WriteLine("Por Favor, Digite apenas numeros\n");
+                continue;
+            }
+
+            if (salarioHolerite <= 0)
+            {
+                Console.WriteLine("Por Favor, insira um salario valido (minimo R$00,01)");
+            }
+
+        } while (salarioHolerite <= 0);
 
         this.NomeEmpresa = nomeEmpresa;
         this.CNPJPagador = cnpj;
@@ -42,11 +79,10 @@ class ContaSalario : Conta
             //Seta a propriedade CNPJPagador como zero para validar que as informações não batem
             CNPJPagador = 0;
         }
-
     }
 
     //Método de depositar salario, testa se o cnpj que vai depositar é o mesmo cadastrado na conta salario e deposita o valor do salario do funcionario
-    public void DepositarSalario(double valorDepositado, int ID, int cnpj)
+    public void DepositarSalario(double valorDepositado, int ID, long cnpj)
     {
 
         //valida se o cnpj inserido é o mesmo do pagador

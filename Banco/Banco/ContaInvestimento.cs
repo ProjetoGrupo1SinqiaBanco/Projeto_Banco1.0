@@ -32,30 +32,49 @@ class ContaInvestimento : Conta
     //Método inicial de Simular um perfil de investidor
     public string SimulaPerfilInvestidor()
     {
+        char resposta1, resposta2, resposta3;
+        bool sucesso;
+
         Console.Clear();
         Console.WriteLine("Simule seu perfil de investidor: ");
 
-        char resposta1;
+        //1° pergunta/resposta e validação da entrada de dados
         do
         {
             Console.WriteLine("Toma maiores riscos ao investir seu dinheiro? (s/n)");
-            resposta1 = char.Parse(Console.ReadLine());
-        } while (resposta1 != 'n' && resposta1 != 's');
+            sucesso = char.TryParse(Console.ReadLine().ToLower(), out resposta1);
 
-        char resposta2;
+            if (!sucesso || (resposta1 != 'n' && resposta1 != 's'))
+            {
+                Console.WriteLine("Por Favor, digite s para SIM e n para NÃO\n");
+            }
+        } while (!sucesso || (resposta1 != 'n' && resposta1 != 's'));
+
+        //2° pergunta/resposta e validação da entrada de dados
         do
         {
             Console.WriteLine("Busca ganhos a longo prazo? (s/n)");
-            resposta2 = char.Parse(Console.ReadLine());
-        } while (resposta2 != 'n' && resposta2 != 's');
+            sucesso = char.TryParse(Console.ReadLine().ToLower(), out resposta2);
 
-        char resposta3;
+            if (!sucesso || (resposta2 != 'n' && resposta2 != 's'))
+            {
+                Console.WriteLine("Por Favor, digite s para SIM e n para NÃO\n");
+            }
+        } while (!sucesso || (resposta2 != 'n' && resposta2 != 's'));
+
+        //3° pergunta/resposta e validação da entrada de dados
         do
         {
             Console.WriteLine("Tem maiores conhecimentos do mercado financeiro e abre mão de maiores seguranças? (s/n)");
-            resposta3 = char.Parse(Console.ReadLine());
-        } while (resposta3 != 'n' && resposta3 != 's');
+            sucesso = char.TryParse(Console.ReadLine().ToLower(), out resposta3);
 
+            if (!sucesso || (resposta3 != 'n' && resposta3 != 's'))
+            {
+                Console.WriteLine("Por Favor, digite s para SIM e n para NÃO\n");
+            }
+        } while (!sucesso || (resposta3 != 'n' && resposta3 != 's'));
+
+        //Teste para descobrir o perfil do usuario
         Console.Clear();
         if (resposta1 == 'n' && resposta2 == 's' && resposta3 == 'n')
         {
@@ -85,9 +104,19 @@ class ContaInvestimento : Conta
         Console.WriteLine("\nBaseado em sua simulação de perfil, selecione o perfil de investimento desejado:\n");
         Console.WriteLine("1 - Conservador: Segurança é seu bem mais precioso.");
         Console.WriteLine("2 - Moderado: Gosta de investir de forma segura, mas também está disposto a se aventurar um pouco.");
-        Console.WriteLine("3 - Arrojado: O maior risco é não correr riscos.");
+        Console.WriteLine("3 - Arrojado: O maior risco é não correr riscos.\n");
 
-        int perfilInvestidor = int.Parse(Console.ReadLine());
+        //Validação da entrada de dados
+        int perfilInvestidor;
+        do
+        {
+            sucesso = int.TryParse(Console.ReadLine(), out perfilInvestidor);
+
+            if (!sucesso || perfilInvestidor > 3 || perfilInvestidor < 1)
+            {
+                Console.WriteLine("Por Favor, digite 1 para Conservador, 2 para Moderado e 3 para Arrojado\n");  
+            }
+        } while (!sucesso || perfilInvestidor > 3 || perfilInvestidor < 1);
 
         switch (perfilInvestidor)
         {

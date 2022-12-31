@@ -98,7 +98,7 @@ abstract class Conta
     //Percorre a List e exibindo o número da conta, saldo atual e as mensagens de saque, depósito e transferência, independentemente da conta
     public virtual void ExtratoBancario()
     {
-        Console.WriteLine($"Número da conta: {NumeroConta} Saldo Atual: {Saldo}");
+        Console.WriteLine($"Número da conta: {NumeroConta}\nSaldo Atual: R${Saldo}\n");
         foreach (string extrato in extratoBancario)
         {
             Console.WriteLine($"- {extrato}");

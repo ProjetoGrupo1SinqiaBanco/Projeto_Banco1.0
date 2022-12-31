@@ -61,3 +61,18 @@ C:\Users\rhuan\OneDrive\Área de Trabalho\Projeto_Banco1.0\Banco\Banco\obj\Debug
 C:\Users\rhuan\OneDrive\Área de Trabalho\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.csproj.CoreCompileInputs.cache
 C:\Users\rhuan\OneDrive\Área de Trabalho\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.genruntimeconfig.cache
 C:\Users\rhuan\OneDrive\Área de Trabalho\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ref\ProjetoTeste.dll
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\bin\Debug\net6.0\ProjetoTeste.exe
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\bin\Debug\net6.0\ProjetoTeste.deps.json
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\bin\Debug\net6.0\ProjetoTeste.runtimeconfig.json
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\bin\Debug\net6.0\ProjetoTeste.dll
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\bin\Debug\net6.0\ProjetoTeste.pdb
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.csproj.AssemblyReference.cache
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.AssemblyInfoInputs.cache
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.AssemblyInfo.cs
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.csproj.CoreCompileInputs.cache
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.dll
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\refint\ProjetoTeste.dll
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.pdb
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ProjetoTeste.genruntimeconfig.cache
+C:\Users\Pichau\source\repos\ProjetoPOO\Projeto_Banco1.0\Banco\Banco\obj\Debug\net6.0\ref\ProjetoTeste.dll

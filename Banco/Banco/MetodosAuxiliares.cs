@@ -297,7 +297,7 @@ namespace Banco
             //Numero da conta de origem e Validação da entrada de dados
             do
             {
-                Console.Write("Digite o ID da conta de origem: ");
+                Console.Write("Digite o número da conta de origem: ");
                 sucesso = int.TryParse(Console.ReadLine(), out int numeroContaOrigem);
 
                 if (!sucesso)

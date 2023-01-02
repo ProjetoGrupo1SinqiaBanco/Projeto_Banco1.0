@@ -13,7 +13,7 @@ abstract class Conta
     private DateTime DataNascimento { get; set; }
 
     //As mensagens de transferencia, saque e depósito serão armazenadas aqui independente da conta
-    List<string> extratoBancario = new List<string>();
+    protected List<string> extratoBancario = new List<string>();
 
     //Construtor da classe Conta
     public Conta(TipoConta tipoConta, double numeroConta, double saldo, string nome, long cpf, DateTime dataNascimento)

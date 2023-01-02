@@ -19,13 +19,20 @@ class ContaInvestimento : Conta
         //TODO
         if (this.Saldo >= valor)
         {
-            this.Ação += valor - empresa.ValorPapeisDisponiveis;
+            this.Saldo -= valor;
+            this.Ação += valor;
+            empresa.ValorPapeisDisponiveis -= valor;
             Console.WriteLine($"Você investiu {valor} reais em ações da {empresa.NomeEmpresa}");
+            Console.WriteLine($"teste {empresa.ValorPapeisDisponiveis}");
         }
         else
         {
             Console.WriteLine("Não foi possível aplicar o investimento por saldo insulficiente");
         }
+
+        //Adiciona a mensagem na List extratoBancario
+        string mensagemExtratoDeposito = $"Investimento de R${valor} reais realizado com sucesso na empresa {empresa.NomeEmpresa}";
+        extratoBancario.Add(mensagemExtratoDeposito);
 
     }
 

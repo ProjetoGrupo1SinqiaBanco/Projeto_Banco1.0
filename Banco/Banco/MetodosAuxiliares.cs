@@ -12,8 +12,102 @@ namespace Banco
         //Armazena as contas salarios criadas, contas que nao sao salario o indice armazena valor nulo.
         static List<ContaSalario> listaContaSalario = new List<ContaSalario>();
 
+        List<Mercado_de_Acoes> listaEmpresasNoMercado = new List<Mercado_de_Acoes>();
+
+        static List<ContaInvestimento> listaContaInvestimento = new List<ContaInvestimento>();
+
+
+
+        public static void ComprarAcoes(Mercado_de_Acoes empresa1, Mercado_de_Acoes empresa2, Mercado_de_Acoes empresa3)
+        {
+
+            Console.Clear();
+
+            //Validade a conta a ser utilizada pelo numero da conta
+            bool sucesso;
+            int indiceConta = -1;
+            do
+            {
+                Console.Write("Digite o numero da conta: ");
+                sucesso = int.TryParse(Console.ReadLine(), out int numeroConta);
+
+                if (!sucesso)
+                {
+                    Console.WriteLine("Por Favor, digite apenas numeros\n");
+                    continue;
+                }
+
+                indiceConta = ValidarNumeroConta(numeroConta);
+
+                if (indiceConta < 0)
+                {
+                    Console.WriteLine("Por Favor, Digite uma conta válida\n");
+                }
+
+            } while (indiceConta < 0);
+
+            Console.Clear();
+
+            TipoConta validacaoConta = listaContas[indiceConta].TipoConta;
+
+            //valida se a conta é do tipo investimento para prosseguir com o metodo e seleciona qual empresa irá comprar ações.
+            if (validacaoConta == TipoConta.ContaInvestimento)
+            {
+                Console.WriteLine("Em qual empresa deseja investir?");
+                Console.WriteLine($"1 - Industrias ACME");
+                Console.WriteLine($"2 - Loja de Pão");
+                Console.WriteLine($"3 - Mamaco Corp");
+
+                int escolhaEmpresa = int.Parse(Console.ReadLine());
+
+                Console.Clear();
+
+                switch (escolhaEmpresa)
+                {
+                    case 1:
+
+                        Console.WriteLine($"{empresa1.NomeEmpresa} tem {empresa1.ValorPapeisDisponiveis} reais em papeis dísponivel para compra");
+                        Console.WriteLine($"Quanto deseja investir?");
+                        double valorInvestido = double.Parse(Console.ReadLine());
+                        listaContaInvestimento[indiceConta].InvestirEmAcoes(valorInvestido, empresa1);
+
+                        Thread.Sleep(3000);
+                        break;
+
+                    case 2:
+
+                        Console.WriteLine($"{empresa2.NomeEmpresa} tem {empresa2.ValorPapeisDisponiveis} reais em papeis dísponivel para compra");
+                        Console.WriteLine($"Quanto deseja investir?");
+                        double valorInvestido2 = double.Parse(Console.ReadLine());
+                        listaContaInvestimento[indiceConta].InvestirEmAcoes(valorInvestido2, empresa2);
+
+                        Thread.Sleep(3000);
+                        break;
+
+                    case 3:
+
+                        Console.WriteLine($"{empresa3.NomeEmpresa} tem {empresa3.ValorPapeisDisponiveis} reais em papeis dísponivel para compra");
+                        Console.WriteLine($"Quanto deseja investir?");
+                        double valorInvestido3 = double.Parse(Console.ReadLine());
+                        listaContaInvestimento[indiceConta].InvestirEmAcoes(valorInvestido3, empresa3);
+
+                        Thread.Sleep(3000);
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Conta inválida, recurso disponível somente para contas do tipo investimento");
+                Console.WriteLine("Pressione qualquer tecla para retornar");
+                Console.ReadKey();
+            }
+        }
+
+
+
         public static void CadastrarConta()
         {
+            
             int entradaTipoConta;
             long entradaCpf;
             double entradaNumeroConta = GerarNumeroConta();
@@ -121,6 +215,7 @@ namespace Banco
                                                                         dataNascimento: entradaDataNascimento,
                                                                         saldoMinimo: entradaSaldoMinimo);
 
+                    listaContaInvestimento.Add(null);
                     listaContaSalario.Add(null); //se a conta criada nao é salario, adiciona nulo na lista de contas salarios
                     listaContas.Add(novaContaPoupanca);
                     Console.WriteLine("Criando conta...");
@@ -201,6 +296,7 @@ namespace Banco
                         Console.ReadKey();
                         break;
                     }
+                    listaContaInvestimento.Add(null);
                     listaContaSalario.Add(novaContaSalario);
                     listaContas.Add(novaContaSalario);
                     Console.WriteLine("Criando conta...");
@@ -226,6 +322,7 @@ namespace Banco
 
                     Console.WriteLine($"Seu perfil de investidor é {perfilInvestidor}");
 
+                    listaContaInvestimento.Add(novaContaInvestidor);
                     listaContaSalario.Add(null); // se a conta criada nao é salario, adiciona nulo na lista de contas salarios
                     listaContas.Add(novaContaInvestidor);
                     Console.WriteLine("Criando conta...");
@@ -570,11 +667,12 @@ namespace Banco
             Console.WriteLine("4 - Sacar");
             Console.WriteLine("5 - Depositar");
             Console.WriteLine("6 - Ver extrato");
+            Console.WriteLine("7 - investir em Ações");
             Console.WriteLine("C - Limpar terminal");
             Console.WriteLine("E - Sair");
             Console.WriteLine();
 
-            string opcoesEsperadas = "123456CE";
+            string opcoesEsperadas = "1234567CE";
             string opcaoDoUsuario;
 
             //Validação da opção do usuario

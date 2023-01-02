@@ -13,26 +13,17 @@ namespace Banco
         static List<ContaSalario> listaContaSalario = new List<ContaSalario>();
 
         public static void CadastrarConta()
-    {
-        int entradaTipoConta;
-        long entradaCpf;
-        double entradaNumeroConta = GerarNumeroConta();
-        double entradaSaldoMinimo = 50 , entradaSaldo = 0;
-        string entradaNome;
-        DateTime entradaDataNascimento;
-        bool sucesso, bug = false;
-
-        try
         {
+            int entradaTipoConta;
+            long entradaCpf;
+            double entradaNumeroConta = GerarNumeroConta();
+            double entradaSaldo = 0;
+            string entradaNome;
+            DateTime entradaDataNascimento;
+            bool sucesso;
+
             Console.Clear();
-
-            //Caso algum Erro de Conversão Aconteça
-            if (bug)
-            {
-                Console.WriteLine("Um Erro Inesperado Aconteceu, Por Favor Cadastre Novamente");
-            }
-
-            Console.WriteLine("Cadastrar nova conta");
+            Console.WriteLine("CADASTRAR NOVA CONTA\n");
 
             //Tipo de Conta que o usuario quer criar e a Validação da entrada de dados
             do
@@ -47,16 +38,20 @@ namespace Banco
 
             } while (!sucesso || entradaTipoConta > 3 || entradaTipoConta < 1);
 
-            //Numero da Conta do usuario e a Validação da entrada de dados
-           
-                Console.Write($"O número da nova conta é: {entradaNumeroConta}");
-                Console.WriteLine(string.Empty);
-
-            while (!sucesso);
-
             //Nome do Titular
-            Console.Write("Digite o nome do titular da conta: ");
-            entradaNome = Console.ReadLine();
+            do
+            {
+                Console.Write("Digite o nome do titular da conta: ");
+                entradaNome = Console.ReadLine();
+
+                sucesso = double.TryParse(entradaNome, out double eNumero);
+
+                if (sucesso)
+                {
+                    Console.WriteLine("Por favor, digite um nome válido para a a criação da sua conta!\n");
+                }
+
+            } while (sucesso);
 
             //CPF do titular e Validação da entrada de dados
             do
@@ -96,18 +91,27 @@ namespace Banco
                 //Construtor da classe ContaPoupança com os parametros próprios da classe.
                 case 1:
 
+                    double entradaSaldoMinimo = 50;
+
                     //Saldo Minimo e Validação da entrada de dados
                     do
                     {
-                        Console.Write("Digite o saldo inicial da conta: ");
-                        sucesso = double.TryParse(Console.ReadLine(), out entradaSaldoMinimo);
+                        Console.WriteLine($"\nO saldo mínimo para a criação da conta poupança é R${entradaSaldoMinimo},00");
+                        Console.Write("Escolha o valor do seu primeiro depósito: R$");
+                        sucesso = double.TryParse(Console.ReadLine(), out entradaSaldo);
 
                         if (!sucesso)
                         {
                             Console.WriteLine("Por Favor, Digite apenas numeros\n");
+                            continue;
                         }
 
-                    } while (!sucesso);
+                        if (entradaSaldo < entradaSaldoMinimo)
+                        {
+                            Console.WriteLine($"O saldo deve ser maior que R${entradaSaldoMinimo},00.\n");
+                        }
+
+                    } while (entradaSaldo < entradaSaldoMinimo);
 
                     ContaPoupanca novaContaPoupanca = new ContaPoupanca(tipoConta: (TipoConta)entradaTipoConta,
                                                                         numeroConta: entradaNumeroConta,
@@ -117,40 +121,51 @@ namespace Banco
                                                                         dataNascimento: entradaDataNascimento,
                                                                         saldoMinimo: entradaSaldoMinimo);
 
-                    listaContaSalario.Add(null); // se a conta criada nao é salario, adiciona nulo na lista de contas salarios
+                    listaContaSalario.Add(null); //se a conta criada nao é salario, adiciona nulo na lista de contas salarios
                     listaContas.Add(novaContaPoupanca);
                     Console.WriteLine("Criando conta...");
                     Thread.Sleep(2000);
                     Console.Clear();
                     Console.WriteLine("Conta poupança criada.");
+                    Console.WriteLine($"O Número da Conta é: {entradaNumeroConta}\n");
                     Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
                     Console.ReadKey();
-
                     break;
 
                 //Construtor da classe ContaSalario com os parametros próprios da classe.
                 case 2:
 
-                    Console.Write("Digite o nome da empresa:");
-                    string nomeEmpresa = Console.ReadLine();
+                    long entradaCNPJ;
+                    double entradaSalario;
+                    string nomeEmpresa;
 
-                    int entradaCNPJ;
+                    //Nome da Empresa
+                    Console.Write("Digite o nome da empresa: ");
+                    nomeEmpresa = Console.ReadLine();
+
+                    //CNPJ e Validação da entrada de dados
                     do
                     {
-                        Console.Write("Digite o CNPJ:");
-                        sucesso = int.TryParse(Console.ReadLine(), out entradaCNPJ);
+                        Console.Write("Digite o CNPJ: ");
+                        sucesso = long.TryParse(Console.ReadLine(), out entradaCNPJ);
 
                         if (!sucesso)
                         {
                             Console.WriteLine("Por Favor, Digite apenas numeros\n");
+                            continue;
                         }
 
-                    } while (!sucesso);
+                        if (entradaCNPJ.ToString().Length != 14)
+                        {
+                            Console.WriteLine("Por Favor, digite um CNPJ valido (14 digitos)\n");
+                        }
 
-                    double entradaSalario;
+                    } while (entradaCNPJ.ToString().Length != 14);
+
+                    //Salario e Validação da entrada de dados
                     do
                     {
-                        Console.Write("Digite o salário:");
+                        Console.Write("Digite o salário: ");
                         sucesso = double.TryParse(Console.ReadLine(), out entradaSalario);
 
                         if (!sucesso)
@@ -192,12 +207,14 @@ namespace Banco
                     Thread.Sleep(2000);
                     Console.Clear();
                     Console.WriteLine("Conta salário criada.");
+                    Console.WriteLine($"O Número da Conta é: {entradaNumeroConta}\n");
                     Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
                     Console.ReadKey();
                     break;
 
                 //Construtor da classe ContaInvestimento com os parametros próprios da classe.
                 case 3:
+
                     ContaInvestimento novaContaInvestidor = new ContaInvestimento(tipoConta: (TipoConta)entradaTipoConta,
                                                                                   numeroConta: entradaNumeroConta,
                                                                                   saldo: entradaSaldo,
@@ -214,101 +231,94 @@ namespace Banco
                     Console.WriteLine("Criando conta...");
                     Thread.Sleep(2000);
                     Console.Clear();
-                    Console.WriteLine("Conta salário criada.");
+                    Console.WriteLine("Conta investimento criada.");
+                    Console.WriteLine($"O Número da Conta é: {entradaNumeroConta}\n");
                     Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
                     Console.ReadKey();
-
                     break;
             }
-
         }
-        catch
-        {
-            bug = true;
-            CadastrarConta();
-        }
-    }
 
-    public static void ListarContas()
-    {
-        if (listaContas.Count == 0)
+        public static void ListarContas()
         {
             Console.Clear();
-            Console.WriteLine("Não há contas abertas");
-            Thread.Sleep(3000);
-        }
-        else
-        {
-            Console.Clear();
-            Console.WriteLine("Listar contas");
-            Console.WriteLine();
-        }
+            Console.WriteLine("LISTA DE CONTAS\n");
 
-        if (listaContas.Count == 0)
-        {
-            Console.WriteLine("Nenhuma conta encontrada.");
-            Console.WriteLine();
-            return;
-        }
-
-        //Percorre a lista de contas criadas exibindo o ID da conta (criado no momento que ela é adicionada na List), nome do titular, numero da conta e tipo da conta
-        for (int i = 0; i < listaContas.Count; i++)
-        {
-            Conta conta = listaContas[i];
-            Console.WriteLine($"ID da conta: #{i} - Titular: {conta.Nome} - Número da conta: {conta.NumeroConta} Tipo da Conta: {conta.TipoConta}");
-        }
-        Console.WriteLine();
-        Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
-        Console.ReadKey();
-    }
-
-    //Esse método passamos o ID das contas que queremos tirar o dinheiro e o da conta que queremos enviar o dineiro, ele identifica esses IDs dentro da List de contas criadas, com isso ele chama o método TransferirDinheiro da classe Conta
-    public static void Transferir()
-    {
-        int indiceContaDestino, indiceContaOrigem;
-        double valorTransferencia;
-        bool sucesso, bug = false;
-
-        try
-        {
-            Console.Clear();
-
-            //Caso algum Erro de Conversão Aconteça
-            if (bug)
+            if (listaContas.Count == 0)
             {
-                Console.WriteLine("Um Erro Inesperado Aconteceu, Por Favor Tente Novamente");
+                Console.WriteLine("Nenhuma conta encontrada.\n");
+            }
+            else
+            {
+                //Percorre a lista de contas criadas exibindo o nome do titular, numero da conta e tipo da conta
+                for (int i = 0; i < listaContas.Count; i++)
+                {
+                    Conta conta = listaContas[i];
+                    Console.WriteLine($"Titular: {conta.Nome} - Número da conta: {conta.NumeroConta} - Tipo da Conta: {conta.TipoConta}\n");
+                }
+
             }
 
-            //ID da conta destino e Validação da entrada de dados     
+            Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
+            Console.ReadKey();
+        }
+
+        //Esse método passamos o numero da conta que queremos tirar o dinheiro e o da conta que queremos enviar o dinheiro, ele identifica as contas dentro da List de contas criadas, com isso ele chama o método TransferirDinheiro da classe Conta
+        public static void Transferir()
+        {
+            int indiceContaDestino = -1, indiceContaOrigem = -1;
+            double valorTransferencia;
+            bool sucesso;
+
+            Console.Clear();
+            Console.WriteLine("TRANSFERÊNCIA\n");
+
+            //Numero da conta destino e Validação da entrada de dados     
             do
             {
-                Console.Write("Digite o ID da conta de destino: ");
-                sucesso = int.TryParse(Console.ReadLine(), out indiceContaDestino);
+                Console.Write("Digite o numero da conta de destino: ");
+                sucesso = int.TryParse(Console.ReadLine(), out int numeroContaDestino);
 
                 if (!sucesso)
                 {
                     Console.WriteLine("Por Favor, digite apenas numeros\n");
+                    continue;
                 }
 
-            } while (!sucesso);
+                indiceContaDestino = ValidarNumeroConta(numeroContaDestino);
 
-            //ID da conta de origem e Validação da entrada de dados
+                if (indiceContaDestino < 0)
+                {
+                    Console.WriteLine("Por Favor, Digite uma conta valida para transferencia\n");
+                }
+
+            } while (indiceContaDestino < 0);
+
+            //Numero da conta de origem e Validação da entrada de dados
             do
             {
                 Console.Write("Digite o ID da conta de origem: ");
-                sucesso = int.TryParse(Console.ReadLine(), out indiceContaOrigem);
+                sucesso = int.TryParse(Console.ReadLine(), out int numeroContaOrigem);
 
                 if (!sucesso)
                 {
                     Console.WriteLine("Por Favor, digite apenas numeros\n");
+                    continue;
                 }
 
-            } while (!sucesso);
+                indiceContaOrigem = ValidarNumeroConta(numeroContaOrigem);
+
+                if (indiceContaOrigem < 0)
+                {
+                    Console.WriteLine("Por Favor, Digite uma conta valida para transferencia");
+                }
+
+            } while (indiceContaOrigem < 0);
 
             //Valor a ser Transferido e Validação da entrada de dados
             do
             {
-                Console.Write("Digite a quantia a ser transferida: ");
+                Console.Write("Digite a quantia a ser transferida: R$");
                 sucesso = double.TryParse(Console.ReadLine(), out valorTransferencia);
 
                 if (!sucesso)
@@ -319,65 +329,59 @@ namespace Banco
 
                 if (valorTransferencia <= 0)
                 {
-                    Console.WriteLine("Por Favor, insira um valor valido para transferencia (minimo R$00,01)");
+                    Console.WriteLine("Por Favor, insira um valor válido para transferencia (minimo R$00,01)\n");
                 }
 
             } while (valorTransferencia <= 0);
 
             listaContas[indiceContaOrigem].TransferirDinheiro(valorTransferencia, listaContas[indiceContaDestino]);
 
-            Console.WriteLine();
+            Console.WriteLine("\nTransferência realizada com sucesso");
             Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
             Console.ReadKey();
         }
-        catch
-        {
-            bug = true;
-            Transferir();
-        }
-    }
 
-    //Esse método passamos os IDs da conta que queremos Sacar e o valor a ser sacado, ele identifica esse ID dentro da List de contas criadas, com isso ele chama o método SacarDinheiro da classe Conta
-    public static void Sacar()
-    {
-        int indiceConta;
-        double valorSaque;
-        double taxaSaque;
-        bool sucesso, bug = false;
-
-        try
+        //Esse método passamos o Numero da conta que queremos Sacar e o valor a ser sacado, ele identifica a conta dentro da List de contas criadas, com isso ele chama o método SacarDinheiro da classe Conta
+        public static void Sacar()
         {
+            int indiceConta = -1;
+            double valorSaque, taxaSaque;
+            bool sucesso;
+
             Console.Clear();
+            Console.WriteLine("SAQUES\n");
 
-            //Caso algum Erro de Conversão Aconteça
-            if (bug)
-            {
-                Console.WriteLine("Um Erro Inesperado Aconteceu, Por Favor Tente Novamente");
-            }
-
-            //ID da conta e Validação da entrada de dados
+            //Numero da conta e Validação da entrada de dados
             do
             {
-                Console.Write("Digite o ID da conta: ");
-                sucesso = int.TryParse(Console.ReadLine(), out indiceConta);
+                Console.Write("Digite o numero da conta: ");
+                sucesso = int.TryParse(Console.ReadLine(), out int numeroConta);
 
                 if (!sucesso)
                 {
                     Console.WriteLine("Por Favor, digite apenas numeros\n");
+                    continue;
                 }
 
-            } while (!sucesso);
+                indiceConta = ValidarNumeroConta(numeroConta);
 
+                if (indiceConta < 0)
+                {
+                    Console.WriteLine("Por Favor, Digite uma conta valida para sacar\n");
+                }
+
+            } while (indiceConta < 0);
+
+            //Quantia a ser Sacada e Validação da entrada de dados
             do
             {
-                Console.Write("Digite a quantia a ser sacada: ");
+                Console.Write("Digite a quantia a ser sacada: R$");
                 sucesso = double.TryParse(Console.ReadLine(), out valorSaque);
                 taxaSaque = listaContas[indiceConta].CalcularValorTarifaManutencao(listaContas[indiceConta].TipoConta);
 
-                    valorSaque -= taxaSaque;     
-                    
+                valorSaque -= taxaSaque;
 
-                    if (!sucesso)
+                if (!sucesso)
                 {
                     Console.WriteLine("Por Favor, digite apenas numeros\n");
                     continue;
@@ -397,43 +401,39 @@ namespace Banco
             Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
             Console.ReadKey();
         }
-        catch 
-        {
-            bug = true;
-            Sacar();
-        }
-    }
 
-    //Esse método passamos o ID da conta que queremos depositar e o valor a ser depositado, ele identifica esse ID dentro da List de contas criadas, com isso ele chama o método DepositarDinheiro da classe Conta
-    public static void Depositar()
-    {
-        TipoConta tipoDeConta;
-        int indiceConta, cnpj;
-        double valorDeposito;
-        bool sucesso, bug = false;
-
-        try
+        //Esse método passamos o numero da conta que queremos depositar e o valor a ser depositado, ele identifica a conta dentro da List de contas criadas, com isso ele chama o método DepositarDinheiro da classe Conta
+        public static void Depositar()
         {
+            TipoConta tipoDeConta;
+            int indiceConta = -1;
+            long cnpj;
+            double valorDeposito;
+            bool sucesso;
+
             Console.Clear();
+            Console.WriteLine("DEPOSITOS\n");
 
-            //Caso algum Erro de Conversão Aconteça
-            if (bug)
-            {
-                Console.WriteLine("Um Erro Inesperado Aconteceu, Por Favor Tente Novamente");
-            }
-
-            //ID da conta e Validação da entrada de dados
+            //Numero da conta e Validação da entrada de dados
             do
             {
-                Console.Write("Digite o ID da conta: ");
-                sucesso = int.TryParse(Console.ReadLine(), out indiceConta);
+                Console.Write("Digite o numero da conta: ");
+                sucesso = int.TryParse(Console.ReadLine(), out int numeroConta);
 
                 if (!sucesso)
                 {
                     Console.WriteLine("Por Favor, digite apenas numeros\n");
+                    continue;
                 }
 
-            } while (!sucesso);
+                indiceConta = ValidarNumeroConta(numeroConta);
+
+                if (indiceConta < 0)
+                {
+                    Console.WriteLine("Por Favor, Digite uma conta valida para depositar\n");
+                }
+
+            } while (indiceConta < 0);
 
             //valida se o tipo de conta é salario para alterar o deposito para deposito de salario(conta salario só se pode depositar o salario)
             tipoDeConta = listaContas[indiceConta].TipoConta;
@@ -442,26 +442,34 @@ namespace Banco
                 Console.Clear();
                 Console.WriteLine("Depósito em conta Salário selecionado");
 
+                //CNPJ e Validação da entrada de dados
                 do
                 {
                     Console.WriteLine("Digite o número do seu CNPJ (apenas números): ");
-                    sucesso = int.TryParse(Console.ReadLine(), out cnpj);
+                    sucesso = long.TryParse(Console.ReadLine(), out cnpj);
 
                     if (!sucesso)
                     {
-                        Console.WriteLine("Por Favor, digite apenas numeros\n");
+                        Console.WriteLine("Por Favor, Digite apenas numeros\n");
+                        continue;
                     }
 
-                } while (!sucesso);
+                    if (cnpj.ToString().Length != 14)
+                    {
+                        Console.WriteLine("Por Favor, digite um CNPJ valido (14 digitos)\n");
+                    }
+
+                } while (cnpj.ToString().Length != 14);
 
                 //chama o metodo depositar salario na classe conta salario e passa os paramentros
                 listaContaSalario[indiceConta].DepositarSalario(listaContaSalario[indiceConta].Salario, indiceConta, cnpj);
             }
-            else 
+            else
             {
+                //Quantia a ser depositada e Validação da entrada de dados
                 do
                 {
-                    Console.Write("Digite a quantia a ser depositada: ");
+                    Console.Write("Digite a quantia a ser depositada: R$");
                     sucesso = double.TryParse(Console.ReadLine(), out valorDeposito);
 
                     if (!sucesso)
@@ -480,45 +488,38 @@ namespace Banco
                 listaContas[indiceConta].DepositarDinheiro(valorDeposito);
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
+            Console.WriteLine("\nAperte qualquer tecla para voltar ao menu");
             Console.ReadKey();
         }
-        catch 
-        {
-            bug = true;
-            Depositar();
-        }
-    }
 
-    //Nesse método, a variavel indiceConta percorre a List listaContas em que estão armazenadas as contas, identificando a respectiva pelo Id que é gerado quando a conta é adicionada nessa List, então ela chama o método ExtratoBancário da classe Conta
-    public static void VerExtrato()
-    {
-        int indiceConta;
-        bool sucesso, bug = false;
-
-        try
+        //Nesse método, a variavel indiceConta percorre a List listaContas em que estão armazenadas as contas, identificando a respectiva pelo Id que é gerado quando a conta é adicionada nessa List, então ela chama o método ExtratoBancário da classe Conta
+        public static void VerExtrato()
         {
+            int indiceConta = -1;
+            bool sucesso;
+
             Console.Clear();
+            Console.WriteLine("EXTRATOS\n");
 
-            //Caso algum Erro de Conversão Aconteça
-            if (bug)
-            {
-                Console.WriteLine("Um Erro Inesperado Aconteceu, Por Favor Tente Novamente");
-            }
-
-            //ID da conta e Validação da entrada de dados
+            //Numero da conta e Validação da entrada de dados
             do
             {
-                Console.Write("Digite o ID da conta: ");
-                sucesso = int.TryParse(Console.ReadLine(), out indiceConta);
+                Console.Write("Digite o numero da conta: ");
+                sucesso = int.TryParse(Console.ReadLine(), out int numeroConta);
 
                 if (!sucesso)
                 {
                     Console.WriteLine("Por Favor, digite apenas numeros\n");
                 }
 
-            } while (!sucesso);
+                indiceConta = ValidarNumeroConta(numeroConta);
+
+                if (indiceConta < 0)
+                {
+                    Console.WriteLine("Por Favor, Digite uma conta valida para ver o extrato\n");
+                }
+
+            } while (indiceConta < 0);
 
             Console.WriteLine("------------Extrato------------");
             listaContas[indiceConta].ExtratoBancario();
@@ -527,12 +528,6 @@ namespace Banco
             Console.WriteLine("Aperte qualquer tecla para voltar ao menu");
             Console.ReadKey();
         }
-        catch
-        {
-            bug = true;
-            VerExtrato();
-        }
-    }
 
         //Gerador de número de conta automático
         public static double GerarNumeroConta()
@@ -543,41 +538,59 @@ namespace Banco
             return numeroContaRandom;
         }
 
-            //Menu da aplicação
-            public static string ObterOpcaoDoUsuario()
-    {
-        Console.WriteLine();
-        Console.WriteLine("Bem vindo(a) ao Banco!!!");
-        Console.WriteLine();
-        Console.WriteLine("Digite a opção desejada: ");
-
-        Console.WriteLine("1 - Cadastrar uma conta");
-        Console.WriteLine("2 - Listar contas");
-        Console.WriteLine("3 - Transferir");
-        Console.WriteLine("4 - Sacar");
-        Console.WriteLine("5 - Depositar");
-        Console.WriteLine("6 - Ver extrato");
-        Console.WriteLine("C - Limpar terminal");
-        Console.WriteLine("E - Sair");
-        Console.WriteLine();
-
-        string opcoesEsperadas = "123456CE";
-        string opcaoDoUsuario;
-
-        //Validação da opção do usuario
-        do
+        //Compara o Numero da Conta inserida pelo usuario e as Contas ja existentes no sistema
+        public static int ValidarNumeroConta(int numeroContaInformado)
         {
-            opcaoDoUsuario = Console.ReadLine().ToUpper();
+            int indiceConta = -1;
 
-            if (!opcoesEsperadas.Contains(opcaoDoUsuario))
+            //Percorre a lista de contas criadas comparando os numeros das mesmas com o numero da conta informado pelo usuario
+            for (int i = 0; i < listaContas.Count; i++)
             {
-                Console.WriteLine("Opção digitada não existe, por favor digite uma das opções acima\n");
+                Conta conta = listaContas[i];
+
+                if (numeroContaInformado == conta.NumeroConta)
+                {
+                    indiceConta = i;
+                    break;
+                }
             }
-        } while (!opcoesEsperadas.Contains(opcaoDoUsuario));
 
-        Console.WriteLine();
-        return opcaoDoUsuario;
+            return indiceConta;
+        }
+
+        //Menu da aplicação
+        public static string ObterOpcaoDoUsuario()
+        {
+            Console.WriteLine("\nBem vindo(a) ao Banco!!!\n");
+            Console.WriteLine("Digite a opção desejada: ");
+
+            Console.WriteLine("1 - Cadastrar uma conta");
+            Console.WriteLine("2 - Listar contas");
+            Console.WriteLine("3 - Transferir");
+            Console.WriteLine("4 - Sacar");
+            Console.WriteLine("5 - Depositar");
+            Console.WriteLine("6 - Ver extrato");
+            Console.WriteLine("C - Limpar terminal");
+            Console.WriteLine("E - Sair");
+            Console.WriteLine();
+
+            string opcoesEsperadas = "123456CE";
+            string opcaoDoUsuario;
+
+            //Validação da opção do usuario
+            do
+            {
+                opcaoDoUsuario = Console.ReadLine().ToUpper();
+
+                if (!opcoesEsperadas.Contains(opcaoDoUsuario))
+                {
+                    Console.WriteLine("Opção digitada não existe, por favor digite uma das opções acima\n");
+                }
+            } while (!opcoesEsperadas.Contains(opcaoDoUsuario));
+
+            Console.WriteLine();
+            return opcaoDoUsuario;
+        }
+
     }
-
-}
 }

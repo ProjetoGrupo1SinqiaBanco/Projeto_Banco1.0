@@ -22,9 +22,9 @@ public class Mercado_de_Acoes
 
 
     //Criação objetos da classe mercado de ações. Jogar no main posteriormente e em list
-    Mercado_de_Acoes empresa1 = new Mercado_de_Acoes("Industrias ACME",1000000,12345678912345);
-    Mercado_de_Acoes empresa2 = new Mercado_de_Acoes("Loja de pão",100000,98765432198765);
-    Mercado_de_Acoes empresa3 = new Mercado_de_Acoes("Jaleco Corp",500000,91764823579468);
+    Mercado_de_Acoes empresa1 = new Mercado_de_Acoes("Industrias ACME", 1000000, 12345678912345);
+    Mercado_de_Acoes empresa2 = new Mercado_de_Acoes("Loja de pão", 100000, 98765432198765);
+    Mercado_de_Acoes empresa3 = new Mercado_de_Acoes("Jaleco Corp", 500000, 91764823579468);
 }
 
 

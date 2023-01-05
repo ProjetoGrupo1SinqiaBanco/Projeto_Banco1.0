@@ -27,6 +27,7 @@ namespace Banco
             bool sucesso;
             int indiceConta = -1;
 
+            Console.WriteLine("Investimentos\n");
             Console.WriteLine("Caso queira voltar ao menu inicial, digite 1.");
             do
             {
@@ -725,7 +726,7 @@ namespace Banco
             Console.WriteLine("4 - Sacar");
             Console.WriteLine("5 - Depositar");
             Console.WriteLine("6 - Ver extrato");
-            Console.WriteLine("7 - investir em Ações");
+            Console.WriteLine("7 - Investir em Ações");
             Console.WriteLine("C - Limpar terminal");
             Console.WriteLine("E - Sair");
             Console.WriteLine();

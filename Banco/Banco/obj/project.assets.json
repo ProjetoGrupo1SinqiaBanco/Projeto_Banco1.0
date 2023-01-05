@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\lucas\\.nuget\\packages\\": {},
-    "D:\\VSComponentes\\NuGetPackages": {}
+    "C:\\Users\\Pichau\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas\\Source\\Repos\\Projeto_Banco1.0\\Banco\\Banco\\ProjetoTeste.csproj",
+      "projectUniqueName": "C:\\Users\\Pichau\\Source\\Repos\\Projeto_Banco1.0\\Banco\\Banco\\ProjetoTeste.csproj",
       "projectName": "ProjetoTeste",
-      "projectPath": "C:\\Users\\lucas\\Source\\Repos\\Projeto_Banco1.0\\Banco\\Banco\\ProjetoTeste.csproj",
-      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas\\Source\\Repos\\Projeto_Banco1.0\\Banco\\Banco\\obj\\",
+      "projectPath": "C:\\Users\\Pichau\\Source\\Repos\\Projeto_Banco1.0\\Banco\\Banco\\ProjetoTeste.csproj",
+      "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Pichau\\Source\\Repos\\Projeto_Banco1.0\\Banco\\Banco\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\VSComponentes\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -66,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

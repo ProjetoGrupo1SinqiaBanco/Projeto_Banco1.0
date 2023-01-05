@@ -82,29 +82,37 @@ abstract class Conta
     {
         double taxaSaque = 0;
 
-        if (valor + taxaSaque <= this.Saldo && valor != 0 & this.Saldo != 0)
-        {
-
             if (tipoDaConta == TipoConta.ContaPoupanca)
             {
                 taxaSaque = 0.35;
-                this.Saldo -= Math.Round(0.35, 2);
-                Console.WriteLine("Efetuado o desconta da taxa de 35 centavos sobre a operação de saque.");
+                if ((valor + taxaSaque) <= this.Saldo && valor != 0 & this.Saldo != 0)
+                {
+                    this.Saldo -= Math.Round(0.35, 2);
+                    Console.WriteLine("Efetuado o desconta da taxa de 35 centavos sobre a operação de saque.");
+                    return taxaSaque;
+                }
             }
             else if (tipoDaConta == TipoConta.ContaSalario)
             {
                 taxaSaque = 0.30;
-                this.Saldo -= Math.Round(0.30, 2);
-                Console.WriteLine("Efetuado o desconta da taxa de 30 centavos sobre a operação de saque.");
+                if ((valor + taxaSaque) <= this.Saldo && valor != 0 & this.Saldo != 0)
+                {
+                    this.Saldo -= Math.Round(0.30, 2);
+                    Console.WriteLine("Efetuado o desconta da taxa de 30 centavos sobre a operação de saque.");
+                    return taxaSaque;
+                }
             }
             else if (tipoDaConta == TipoConta.ContaInvestimento)
             {
                 taxaSaque = 0.80;
-                this.Saldo -= Math.Round(0.80, 2);
-                Console.WriteLine("Efetuado o desconta da taxa de 80 centavos sobre a operação de saque.");
+                if ((valor + taxaSaque) <= this.Saldo && valor != 0 & this.Saldo != 0)
+                {
+                    this.Saldo -= Math.Round(0.80, 2);
+                    Console.WriteLine("Efetuado o desconta da taxa de 80 centavos sobre a operação de saque.");
+                    return taxaSaque;
+                }
             }
-            return taxaSaque;
-        }
+        taxaSaque = 0;
         return taxaSaque;
     }
 

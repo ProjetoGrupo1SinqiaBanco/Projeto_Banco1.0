@@ -504,7 +504,7 @@ namespace Banco
                 sucesso = double.TryParse(Console.ReadLine(), out valorSaque);
                 taxaSaque = listaContas[indiceConta].CalcularValorTarifaManutencao(listaContas[indiceConta].TipoConta, valorSaque);
 
-                valorSaque -= taxaSaque;
+                //valorSaque -= taxaSaque;
 
                 if (!sucesso)
                 {

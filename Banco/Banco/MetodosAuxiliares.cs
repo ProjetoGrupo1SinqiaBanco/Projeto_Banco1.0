@@ -26,10 +26,18 @@ namespace Banco
             //Validade a conta a ser utilizada pelo numero da conta
             bool sucesso;
             int indiceConta = -1;
+
+            Console.WriteLine("Caso queira voltar ao menu inicial, digite 1.");
             do
             {
                 Console.Write("Digite o numero da conta: ");
                 sucesso = int.TryParse(Console.ReadLine(), out int numeroConta);
+
+                if (numeroConta == 1)
+                {
+                    Console.Clear();
+                    return;
+                }
 
                 if (!sucesso)
                 {
@@ -41,7 +49,7 @@ namespace Banco
 
                 if (indiceConta < 0)
                 {
-                    Console.WriteLine("Por Favor, Digite uma conta válida\n");
+                    Console.WriteLine("Por Favor, Digite uma conta válida ou digite 1 para sair.");
                 }
 
             } while (indiceConta < 0);

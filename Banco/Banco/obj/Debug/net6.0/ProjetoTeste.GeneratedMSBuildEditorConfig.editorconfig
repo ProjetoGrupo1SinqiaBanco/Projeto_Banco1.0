@@ -5,11 +5,6 @@ build_property.UsingMicrosoftNETSdkWeb =
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProjetoTeste
-<<<<<<< HEAD
-build_property.ProjectDir = c:\Users\jusea\OneDrive\Documentos\Sinqia\BeTheNext\Modulo 2 - POO\Projetos\Banco_Rep_3\Projeto_Banco1.0\Banco\Banco\
-=======
-build_property.ProjectDir = C:\Users\lucas\Source\Repos\Projeto_Banco1.0\Banco\Banco\
->>>>>>> 3663e902c8af76a4baa51ebb806cfaf50d5c8c69
+build_property.ProjectDir = C:\Users\jusea\OneDrive\Documentos\Sinqia\BeTheNext\Modulo 2 - POO\Projetos\Banco_Rep_3\Projeto_Banco1.0\Banco\Banco\

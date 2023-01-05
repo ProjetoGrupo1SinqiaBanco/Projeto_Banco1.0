@@ -36,7 +36,9 @@ abstract class Conta
             Console.WriteLine("Saldo insuficiente!");
             return false;
         }
+        valorSaque = Math.Round(valorSaque,2);
         this.Saldo -= valorSaque;
+        this.Saldo = Math.Round(this.Saldo,2);
 
         Console.WriteLine($"Saque de R${valorSaque} reais realizado com sucesso");
 
@@ -83,14 +85,17 @@ abstract class Conta
         if (tipoDaConta == TipoConta.ContaPoupanca)
         {
             taxaSaque = 0.35;
+            this.Saldo -= Math.Round(0.35,2);
         }
         else if (tipoDaConta == TipoConta.ContaSalario)
         {
             taxaSaque = 0.30;
+            this.Saldo -= Math.Round(0.30,2);
         }
         else if (tipoDaConta == TipoConta.ContaInvestimento)
         {
             taxaSaque = 0.80;
+            this.Saldo -= Math.Round(0.80,2);
         }
         return taxaSaque;
     }

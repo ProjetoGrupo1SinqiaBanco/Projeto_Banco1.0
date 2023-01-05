@@ -142,7 +142,7 @@ namespace Banco
 
                 if (sucesso)
                 {
-                    Console.WriteLine("Por favor, digite um nome válido para a a criação da sua conta!\n");
+                    Console.WriteLine("Por favor, digite um nome válido para a a criação da sua contaAAAA!\n");
                 }
 
             } while (sucesso);
@@ -370,11 +370,18 @@ namespace Banco
             Console.Clear();
             Console.WriteLine("TRANSFERÊNCIA\n");
 
+            Console.WriteLine("Caso queira voltar ao menu inicial, digite 1.");
             //Numero da conta destino e Validação da entrada de dados     
             do
             {
                 Console.Write("Digite o numero da conta de destino: ");
                 sucesso = int.TryParse(Console.ReadLine(), out int numeroContaDestino);
+
+                if (numeroContaDestino == 1)
+                {
+                    Console.Clear();
+                    return;
+                }
 
                 if (!sucesso)
                 {
@@ -386,16 +393,24 @@ namespace Banco
 
                 if (indiceContaDestino < 0)
                 {
-                    Console.WriteLine("Por Favor, Digite uma conta valida para transferencia\n");
+                    Console.Write("Por Favor, Digite uma conta valida para transferencia");
+                    Console.WriteLine(" ou digite 1 para sair.\n");
                 }
 
             } while (indiceContaDestino < 0);
 
+            Console.WriteLine("Caso queira voltar ao menu inicial, digite 1.");
             //Numero da conta de origem e Validação da entrada de dados
             do
             {
                 Console.Write("Digite o número da conta de origem: ");
                 sucesso = int.TryParse(Console.ReadLine(), out int numeroContaOrigem);
+
+                if (numeroContaOrigem == 1)
+                {
+                    Console.Clear();
+                    return;
+                }
 
                 if (!sucesso)
                 {
@@ -407,7 +422,8 @@ namespace Banco
 
                 if (indiceContaOrigem < 0)
                 {
-                    Console.WriteLine("Por Favor, Digite uma conta valida para transferencia");
+                    Console.Write("Por Favor, Digite uma conta valida para transferencia");
+                    Console.WriteLine(" ou digite 1 para sair.\n");
                 }
 
             } while (indiceContaOrigem < 0);
@@ -441,18 +457,27 @@ namespace Banco
         //Esse método passamos o Numero da conta que queremos Sacar e o valor a ser sacado, ele identifica a conta dentro da List de contas criadas, com isso ele chama o método SacarDinheiro da classe Conta
         public static void Sacar()
         {
+
             int indiceConta = -1;
             double valorSaque, taxaSaque;
             bool sucesso;
+            int numeroConta;
 
             Console.Clear();
             Console.WriteLine("SAQUES\n");
 
             //Numero da conta e Validação da entrada de dados
+            Console.WriteLine("Caso queira voltar ao menu inicial, digite 1.");
             do
             {
-                Console.Write("Digite o numero da conta: ");
-                sucesso = int.TryParse(Console.ReadLine(), out int numeroConta);
+                Console.WriteLine("Digite o numero da conta: ");
+                sucesso = int.TryParse(Console.ReadLine(), out numeroConta);
+
+                if (numeroConta == 1)
+                {
+                    Console.Clear();
+                    return;
+                }
 
                 if (!sucesso)
                 {
@@ -464,8 +489,11 @@ namespace Banco
 
                 if (indiceConta < 0)
                 {
-                    Console.WriteLine("Por Favor, Digite uma conta valida para sacar\n");
+                    Console.Write("Por Favor, Digite uma conta valida para sacar");
+                    Console.WriteLine(" ou digite 1 para sair.\n");
                 }
+
+
 
             } while (indiceConta < 0);
 
@@ -511,11 +539,18 @@ namespace Banco
             Console.Clear();
             Console.WriteLine("DEPOSITOS\n");
 
+            Console.WriteLine("Caso queira voltar ao menu inicial, digite 1.");
             //Numero da conta e Validação da entrada de dados
             do
             {
                 Console.Write("Digite o numero da conta: ");
                 sucesso = int.TryParse(Console.ReadLine(), out int numeroConta);
+
+                if (numeroConta == 1)
+                {
+                    Console.Clear();
+                    return;
+                }
 
                 if (!sucesso)
                 {
@@ -527,7 +562,8 @@ namespace Banco
 
                 if (indiceConta < 0)
                 {
-                    Console.WriteLine("Por Favor, Digite uma conta valida para depositar\n");
+                    Console.Write("Por Favor, Digite uma conta valida para depositar");
+                    Console.WriteLine(" ou digite 1 para sair.\n");
                 }
 
             } while (indiceConta < 0);
@@ -539,11 +575,18 @@ namespace Banco
                 Console.Clear();
                 Console.WriteLine("Depósito em conta Salário selecionado");
 
+                Console.WriteLine("Caso queira voltar ao menu inicial, digite 1.");
                 //CNPJ e Validação da entrada de dados
                 do
                 {
                     Console.WriteLine("Digite o número do seu CNPJ (apenas números): ");
                     sucesso = long.TryParse(Console.ReadLine(), out cnpj);
+
+                    if (cnpj == 1)
+                    {
+                    Console.Clear();
+                    return;
+                    }
 
                     if (!sucesso)
                     {
@@ -553,7 +596,7 @@ namespace Banco
 
                     if (cnpj.ToString().Length != 14)
                     {
-                        Console.WriteLine("Por Favor, digite um CNPJ valido (14 digitos)\n");
+                        Console.WriteLine("Por Favor, digite um CNPJ valido (14 digitos) ou digite 1 para sair.\n");
                     }
 
                 } while (cnpj.ToString().Length != 14);
@@ -598,11 +641,18 @@ namespace Banco
             Console.Clear();
             Console.WriteLine("EXTRATOS\n");
 
+            Console.WriteLine("Caso queira voltar ao menu inicial, digite 1.");
             //Numero da conta e Validação da entrada de dados
             do
             {
                 Console.Write("Digite o numero da conta: ");
                 sucesso = int.TryParse(Console.ReadLine(), out int numeroConta);
+
+                if (numeroConta == 1)
+                    {
+                    Console.Clear();
+                    return;
+                    }
 
                 if (!sucesso)
                 {
@@ -613,7 +663,7 @@ namespace Banco
 
                 if (indiceConta < 0)
                 {
-                    Console.WriteLine("Por Favor, Digite uma conta valida para ver o extrato\n");
+                    Console.WriteLine("Por Favor, Digite uma conta valida para ver o extrato ou digite 1 para sair.\n");
                 }
 
             } while (indiceConta < 0);
@@ -684,10 +734,9 @@ namespace Banco
                 {
                     Console.WriteLine("Opção digitada não existe, por favor digite uma das opções acima\n");
                 }
+                return opcaoDoUsuario;
             } while (!opcoesEsperadas.Contains(opcaoDoUsuario));
 
-            Console.WriteLine();
-            return opcaoDoUsuario;
         }
 
     }

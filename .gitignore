@@ -1,0 +1,17 @@
+﻿# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+[Bb]in/
+[Oo]bj/
+
+.vs/Projeto_Banco1.0/v17/.wsuo
+Banco/.vs/Banco/FileContentIndex/d05a169d-268f-4073-9adf-bba1588043a0.vsidx
+Banco/Banco/obj/Debug/net6.0/ProjetoTeste.GeneratedMSBuildEditorConfig.editorconfig
+Banco/Banco/obj/Debug/net6.0/ProjetoTeste.assets.cache
+Banco/Banco/obj/ProjetoTeste.csproj.nuget.dgspec.json
+Banco/Banco/obj/ProjetoTeste.csproj.nuget.g.props
+Banco/Banco/obj/project.assets.json
+Banco/Banco/obj/project.nuget.cache
+Banco/.vs/Banco/FileContentIndex/89b19f1e-cbea-478a-a2da-c494afbb8261.vsidx
+Banco/.vs/Banco/FileContentIndex/bd8314d4-b3da-42ca-bb81-727ca095ffdd.vsidx

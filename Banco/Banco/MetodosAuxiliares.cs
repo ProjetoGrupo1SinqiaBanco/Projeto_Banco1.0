@@ -142,7 +142,7 @@ namespace Banco
 
                 if (sucesso)
                 {
-                    Console.WriteLine("Por favor, digite um nome válido para a a criação da sua conta!\n");
+                    Console.WriteLine("Por favor, digite um nome válido para a a criação da sua contaAAAA!\n");
                 }
 
             } while (sucesso);
@@ -441,18 +441,27 @@ namespace Banco
         //Esse método passamos o Numero da conta que queremos Sacar e o valor a ser sacado, ele identifica a conta dentro da List de contas criadas, com isso ele chama o método SacarDinheiro da classe Conta
         public static void Sacar()
         {
+
             int indiceConta = -1;
             double valorSaque, taxaSaque;
             bool sucesso;
+            int numeroConta;
 
             Console.Clear();
             Console.WriteLine("SAQUES\n");
 
             //Numero da conta e Validação da entrada de dados
+            Console.WriteLine("Caso queira voltar ao menu inicial, digite 1.");
             do
             {
-                Console.Write("Digite o numero da conta: ");
-                sucesso = int.TryParse(Console.ReadLine(), out int numeroConta);
+                Console.WriteLine("Digite o numero da conta: ");
+                sucesso = int.TryParse(Console.ReadLine(), out numeroConta);
+
+                if (numeroConta == 1)
+                {
+                    Console.Clear();
+                    MetodosAuxiliares.ObterOpcaoDoUsuario();
+                }
 
                 if (!sucesso)
                 {
@@ -466,6 +475,8 @@ namespace Banco
                 {
                     Console.WriteLine("Por Favor, Digite uma conta valida para sacar\n");
                 }
+
+
 
             } while (indiceConta < 0);
 
@@ -656,7 +667,7 @@ namespace Banco
         }
 
         //Menu da aplicação
-        public static string ObterOpcaoDoUsuario()
+        public static void ObterOpcaoDoUsuario()
         {
             Console.WriteLine("\nBem vindo(a) ao Banco!!!\n");
             Console.WriteLine("Digite a opção desejada: ");
@@ -686,8 +697,48 @@ namespace Banco
                 }
             } while (!opcoesEsperadas.Contains(opcaoDoUsuario));
 
+            //Criação objetos da classe mercado de ações para uso no metodo de investir em ações.
+            Mercado_de_Acoes empresa1 = new Mercado_de_Acoes("Industrias ACME", 1000000, 12345678912345);
+            Mercado_de_Acoes empresa2 = new Mercado_de_Acoes("Loja de pão", 200000, 98765432198765);
+            Mercado_de_Acoes empresa3 = new Mercado_de_Acoes("Mamaco Corp", 500000, 91764823579468);
+
+            while (opcaoDoUsuario != "E")
+            {
+                switch (opcaoDoUsuario)
+                {
+                    case "1":
+                        MetodosAuxiliares.CadastrarConta();
+                        break;
+                    case "2":
+                        MetodosAuxiliares.ListarContas();
+                        break;
+                    case "3":
+                        MetodosAuxiliares.Transferir();
+                        break;
+                    case "4":
+                        MetodosAuxiliares.Sacar();
+                        break;
+                    case "5":
+                        MetodosAuxiliares.Depositar();
+                        break;
+                    case "6":
+                        MetodosAuxiliares.VerExtrato();
+                        break;
+                    case "7":
+                        MetodosAuxiliares.ComprarAcoes(empresa1, empresa2, empresa3);
+                        break;
+                    case "C":
+                        Console.Clear();
+                        break;
+                    case "E":
+                        return;
+                }
+            }
+
+            Console.WriteLine("Obrigado(a) por utilizar nossos serviços, até breve!!");
+            Console.ReadLine();
+
             Console.WriteLine();
-            return opcaoDoUsuario;
         }
 
     }

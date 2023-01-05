@@ -20,6 +20,7 @@ class ContaSalario : Conta
 
         //VALIDAÇÃO DO HOLERITE
         Console.Clear();
+        Console.Clear();
         Console.WriteLine("Entre com seu HOLERITE:");
 
         Console.Write("Nome funcionário: ");

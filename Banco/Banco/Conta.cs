@@ -43,7 +43,7 @@ abstract class Conta
         Console.WriteLine($"Saque de R${valorSaque} reais realizado com sucesso");
 
         //Adiciona a mensagem na List extratoBancario
-        string mensagemExtratoSaque = $"Saque de R${valorSaque} reais realizado com sucesso da conta {NumeroConta}";
+        string mensagemExtratoSaque = $"Saque de R${valorSaque} reais, com tarifas, realizado com sucesso da conta {NumeroConta}";
         extratoBancario.Add(mensagemExtratoSaque);
         return true;
     }

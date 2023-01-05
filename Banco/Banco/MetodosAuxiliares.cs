@@ -502,7 +502,7 @@ namespace Banco
             {
                 Console.Write("Digite a quantia a ser sacada: R$");
                 sucesso = double.TryParse(Console.ReadLine(), out valorSaque);
-                taxaSaque = listaContas[indiceConta].CalcularValorTarifaManutencao(listaContas[indiceConta].TipoConta);
+                taxaSaque = listaContas[indiceConta].CalcularValorTarifaManutencao(listaContas[indiceConta].TipoConta, valorSaque);
 
                 valorSaque -= taxaSaque;
 

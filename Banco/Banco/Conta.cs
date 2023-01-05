@@ -78,24 +78,29 @@ abstract class Conta
         extratoBancario.Add(mensagemExtratoTransferencia);
     }
 
-    public virtual double CalcularValorTarifaManutencao(TipoConta tipoDaConta)
+    public virtual double CalcularValorTarifaManutencao(TipoConta tipoDaConta, double valor)
     {
         double taxaSaque = 0;
 
-        if (tipoDaConta == TipoConta.ContaPoupanca)
+        if (valor >= this.Saldo && valor != 0 & this.Saldo != 0)
         {
-            taxaSaque = 0.35;
-            this.Saldo -= Math.Round(0.35,2);
-        }
-        else if (tipoDaConta == TipoConta.ContaSalario)
-        {
-            taxaSaque = 0.30;
-            this.Saldo -= Math.Round(0.30,2);
-        }
-        else if (tipoDaConta == TipoConta.ContaInvestimento)
-        {
-            taxaSaque = 0.80;
-            this.Saldo -= Math.Round(0.80,2);
+
+            if (tipoDaConta == TipoConta.ContaPoupanca)
+            {
+                taxaSaque = 0.35;
+                this.Saldo -= Math.Round(0.35, 2);
+            }
+            else if (tipoDaConta == TipoConta.ContaSalario)
+            {
+                taxaSaque = 0.30;
+                this.Saldo -= Math.Round(0.30, 2);
+            }
+            else if (tipoDaConta == TipoConta.ContaInvestimento)
+            {
+                taxaSaque = 0.80;
+                this.Saldo -= Math.Round(0.80, 2);
+            }
+            return taxaSaque;
         }
         return taxaSaque;
     }

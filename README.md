@@ -15,9 +15,13 @@ Para fazer um clone deste repositório, siga os seguintes passos:
 
 Observe que é necessário ter o git instalado em sua máquina para poder utilizar este comando. Se você ainda não tem o git instalado, pode seguir as instruções em https://git-scm.com/book/en/v2/Getting-Started-Installing-Git para instalá-lo.
 
+---
+
 ### Este projeto foi desenvolvido pelo Grupo 1, composto pelos seguintes participantes:
 - Lucas de Souza
 - Rafael Pinheiro
 - José Augusto
 - Rodrigo Santos
 - Rhuan Firmino
+
+

@@ -15,6 +15,33 @@ Para fazer um clone deste repositório, siga os seguintes passos:
 
 Observe que é necessário ter o git instalado em sua máquina para poder utilizar este comando. Se você ainda não tem o git instalado, pode seguir as instruções em https://git-scm.com/book/en/v2/Getting-Started-Installing-Git para instalá-lo.
 
+```mermaid
+classDiagram
+class Conta {
+    double numeroConta
+    TipoConta TipoConta
+    double Saldo
+    string Nome
+    long Cpf
+    DateTime DataDeNascimento
+}
+class ContaInvestimento {
+    string PerfilInvestidor
+    double Acao
+}
+class ContaPoupanca {
+    double saldoMinimo
+}
+class ContaSalario {
+    long CnpjPagador
+    string NomeEmpresa
+    double Salario
+}
+Conta <|-- ContaPoupanca
+Conta <|-- ContaInvestimento
+Conta <|-- ContaSalario
+```
+
 ---
 
 ### Este projeto foi desenvolvido pelo Grupo 1, composto pelos seguintes participantes:
